@@ -45,9 +45,10 @@ var Embedded = Backbone.View.extend({
             if(obj.links) {
                 var objLinks = new Links({
                     model: obj,
+                    tagName: 'div',
                     selfName: 'open'
                 });
-                that.$el.find(".emb_links").last().html(objLinks.render().el);
+                that.$el.find(".emb_links").last().append(objLinks.render().el);
             }
             if(obj.embedded && Object.keys(obj.embedded).length) {
                 var objEmbedded = new Embedded({

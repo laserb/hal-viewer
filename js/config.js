@@ -15,3 +15,4 @@ var getUrlParameter = function getUrlParameter(sParam) {
 
 var entryPoint = getUrlParameter('entryPoint') || 'http://localhost';
 var token = getUrlParameter('token') || '';
+var audioStreamItem = 'stream';

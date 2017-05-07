@@ -15,13 +15,23 @@
 
     <script id="nav_links_template" type="text/template">
             {{#links}}
-                <li><a class="link" name="{{link}}" href="#">{{name}}</a></li>
+                {{#audio_stream}}
+                    <div class="audio"><audio controls><source src="{{link}}"></audio></div>
+                {{/audio_stream}}
+                {{^audio_stream}}
+                    <li><a class="link" name="{{link}}" href="#">{{name}}</a></li>
+                {{/audio_stream}}
             {{/links}}
     </script>
 
     <script id="links_template" type="text/template">
             {{#links}}
-                <li><a class="link btn btn-default" name="{{link}}" href="#">{{name}}</a></li>
+                {{#audio_stream}}
+                    <div class="audio"><audio controls><source src="{{link}}"></audio></div>
+                {{/audio_stream}}
+                {{^audio_stream}}
+                    <a class="link" name="{{link}}" href="#">{{name}}</a>
+                {{/audio_stream}}
             {{/links}}
     </script>
 
@@ -37,14 +47,15 @@
     <script id="embedded_template" type="text/template">
         <div class="panel-heading">
             <h4 class="panel-title">
-                <a data-toggle="collapse" data-parent="#{{parent}}" href="#emb{{number}}-{{index}}"><h5 class="embedded_name">{{embName}}</h5>{{name}}</a>
+                <a data-toggle="collapse" data-parent="#{{parent}}" href="#emb{{number}}-{{index}}"><h5 class="embedded_name">{{embName}}</h5>{{name}}
+                </a>
             </h4>
+            <div class="emb_links"></div>
         </div>
         <div id="emb{{number}}-{{index}}" class="panel-collapse collapse">
             <div class="panel-body">
                 <div class="emb_props"></div>
                 <div class="emb_embedded"></div>
-                <div class="emb_links"></div>
             </div>
         </div>
     </script>

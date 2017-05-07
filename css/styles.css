@@ -28,12 +28,61 @@
 .links {
     list-style-type: none;
     text-transform: capitalize;
-}
-
-.links li {
-    display: inline;
+    height: 100%;
 }
 
 .link {
+    display: inline-block;
     text-transform: capitalize;
+    height: inherit;
+    padding: 10px 15px;
+    vertical-align: top;
+}
+
+.emb_links {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+}
+
+.emb_links .links .link {
+    color: black;
+    background: lightgray;
+    text-decoration: none;
+    text-align: center;
+}
+
+.emb_links .links .link:hover {
+    background-color: gray;
+}
+
+.panel-heading {
+    position: relative;
+    padding: 0 !important;
+}
+
+.panel-title {
+    width: 30%;
+}
+
+.panel-title a {
+    display: inline-block;
+    padding: 10px 15px;
+    text-decoration: none !important;
+    text-align: center;
+}
+
+.panel-title a:hover {
+    background-color: lightgray;
+}
+
+.audio {
+    display: inline-block;
+    height: inherit;
+    background-color: lightgray;
+}
+
+audio::-webkit-media-controls-panel {
+    background-color: lightgray;
 }
