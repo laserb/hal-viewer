@@ -1,7 +1,11 @@
 var Viewer = Backbone.View.extend({
     render: function() {
-        console.log("hier");
-        var links = new Links({model: root});
+        var links = new Links({
+            model: root,
+            className: "nav navbar-nav",
+            template: _.template($("#nav_links_template").html()),
+            selfName: "reload"
+        });
         var props = new Props({model: root});
         var embedded = new Embedded({model: root});
         $("#navigation").html(links.render().el);

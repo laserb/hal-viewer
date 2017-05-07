@@ -1,5 +1,5 @@
 var Props = Backbone.View.extend({
-    className: 'props',
+    className: 'props list-group',
 
     tagName: 'ul',
 

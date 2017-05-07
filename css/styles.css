@@ -1,0 +1,33 @@
+#main_navigation {
+    margin-bottom: 0;
+}
+
+.props_name {
+    font-weight: bolder;
+    text-transform: capitalize;
+}
+
+.props {
+    list-style-type: none;
+}
+
+.props h5 {
+    margin-bottom: 0;
+}
+
+.embedded {
+    list-style-type: none;
+}
+
+.links {
+    list-style-type: none;
+    text-transform: capitalize;
+}
+
+.links li {
+    display: inline;
+}
+
+.link {
+    text-transform: capitalize;
+}

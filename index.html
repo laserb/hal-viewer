@@ -6,35 +6,47 @@
     <link rel="stylesheet" media="screen" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
 </head>
 <body>
-    <nav id="main_navigation"></nav>
-    <nav id="navigation"></nav>
-    <div id="properties"></div>
-    <div id="embedded"></div>
+    <nav class="navbar navbar-inverse" id="main_navigation"></nav>
+    <nav class="navbar navbar-default" id="navigation"></nav>
+    <div class="container">
+        <div id="properties"></div>
+        <div class="panel-group" id="embedded"></div>
+    </div>
 
     <script id="nav_links_template" type="text/template">
             {{#links}}
-                <li><a class="link" name="{{name}}" href="#">{{name}}</a></li>
+                <li><a class="link" name="{{link}}" href="#">{{name}}</a></li>
             {{/links}}
     </script>
 
     <script id="links_template" type="text/template">
             {{#links}}
-                <li><a class="link" name="{{name}}" href="#">{{name}}</a></li>
+                <li><a class="link btn btn-default" name="{{link}}" href="#">{{name}}</a></li>
             {{/links}}
     </script>
 
     <script id="props_template" type="text/template">
         {{#props}}
-            <li><span class="props_name">{{name}}</span><span class="props_value">{{value}}</value></li>
+            <li class="list-group-item">
+                <h5 class="props_name">{{name}}</h5>
+                <span class="props_value">{{value}}</value>
+            </li>
         {{/props}}
     </script>
 
     <script id="embedded_template" type="text/template">
-<li>
-            <h2>{{name}}</h2>
-            <div class="emb_props"></div>
-            <div class="emb_links"></div>
-            </li>
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#embedded" href="#emb{{index}}">{{name}}</a>
+            </h4>
+        </div>
+        <div id="emb{{index}}" class="panel-collapse collapse">
+            <div class="panel-body">
+                <div class="emb_props"></div>
+                <div class="emb_embedded"></div>
+                <div class="emb_links"></div>
+            </div>
+        </div>
     </script>
 
     <script src="bower_components/jQuery/dist/jquery.min.js"></script>

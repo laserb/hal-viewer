@@ -12,7 +12,9 @@ Router = Backbone.Router.extend({
         api.fetch().then(function (root) {
             var links = new Links({
                 model: root,
-                template: _.template($("#nav_links_template").html())
+                template: _.template($("#nav_links_template").html()),
+                className: "nav navbar-nav",
+                selfName: "home"
             });
             $("#main_navigation").html(links.render().el);
         }, function (err) {

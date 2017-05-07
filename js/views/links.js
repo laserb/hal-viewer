@@ -3,7 +3,8 @@ var Links = Backbone.View.extend({
         this.model = options.model;
         if(options.template) {
             this.template = options.template;
-        }
+        };
+        this.selfName = options.selfName || 'self';
     },
 
     events: {
@@ -18,8 +19,13 @@ var Links = Backbone.View.extend({
 
     render: function() {
         var links = Object.keys(this.model.links);
+        var that = this;
         links = $.map(links, function(link, i) {
-            return { name: link };
+            var name = link === 'self' ? that.selfName : link;
+            return {
+                name: name,
+                link: link
+            };
         });
         this.$el.html(Mustache.render(this.template(),
             { links: links }
