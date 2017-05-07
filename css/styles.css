@@ -39,6 +39,10 @@
     vertical-align: top;
 }
 
+.nav {
+    text-transform: capitalize;
+}
+
 .emb_links {
     position: absolute;
     top: 0;

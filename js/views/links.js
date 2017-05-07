@@ -12,6 +12,7 @@ var Links = Backbone.View.extend({
         if(options.className) {
             this.className = options.className;
         }
+        this.backButton = options.backButton;
     },
 
     events: {
@@ -27,6 +28,11 @@ var Links = Backbone.View.extend({
     render: function() {
         var that = this;
         var links = [];
+        if(this.backButton) {
+            links.push({
+                back_button: true
+            });
+        }
         $.each(Object.keys(this.model.links), function(i, link) {
             if(that.index) {
                 if(that.index.indexOf(i) === -1) {

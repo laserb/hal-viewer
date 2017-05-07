@@ -15,12 +15,17 @@
 
     <script id="nav_links_template" type="text/template">
             {{#links}}
-                {{#audio_stream}}
-                    <div class="audio"><audio controls><source src="{{link}}"></audio></div>
-                {{/audio_stream}}
-                {{^audio_stream}}
-                    <li><a class="link" name="{{link}}" href="#">{{name}}</a></li>
-                {{/audio_stream}}
+                {{#back_button}}
+                    <li><a href="#" onclick="window.history.back()">back</a></li>
+                {{/back_button}}
+                {{^back_button}}
+                    {{#audio_stream}}
+                        <div class="audio"><audio controls><source src="{{link}}"></audio></div>
+                    {{/audio_stream}}
+                    {{^audio_stream}}
+                        <li><a class="link" name="{{link}}" href="#">{{name}}</a></li>
+                    {{/audio_stream}}
+                {{/back_button}}
             {{/links}}
     </script>
 
