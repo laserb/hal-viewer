@@ -37,10 +37,10 @@
     <script id="embedded_template" type="text/template">
         <div class="panel-heading">
             <h4 class="panel-title">
-                <a data-toggle="collapse" data-parent="#embedded" href="#emb{{index}}">{{name}}</a>
+                <a data-toggle="collapse" data-parent="#{{parent}}" href="#emb{{number}}-{{index}}"><h5 class="embedded_name">{{embName}}</h5>{{name}}</a>
             </h4>
         </div>
-        <div id="emb{{index}}" class="panel-collapse collapse">
+        <div id="emb{{number}}-{{index}}" class="panel-collapse collapse">
             <div class="panel-body">
                 <div class="emb_props"></div>
                 <div class="emb_embedded"></div>

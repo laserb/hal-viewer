@@ -19,6 +19,12 @@
     list-style-type: none;
 }
 
+.embedded_name {
+    text-transform: capitalize;
+    margin-bottom: 0;
+    font-weight: bolder;
+}
+
 .links {
     list-style-type: none;
     text-transform: capitalize;
