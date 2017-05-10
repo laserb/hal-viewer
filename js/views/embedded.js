@@ -39,7 +39,7 @@ var Embedded = Backbone.View.extend({
             }
             ));
             if(obj.props) {
-                var objProps = new Props({model: obj});
+                var objProps = new Props({model: obj.props});
                 that.$el.find(".emb_props").last().html(objProps.render().el);
             }
             if(obj.links) {

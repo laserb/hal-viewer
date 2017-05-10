@@ -7,7 +7,7 @@ var Viewer = Backbone.View.extend({
             selfName: "reload",
             backButton: true
         });
-        var props = new Props({model: root});
+        var props = new Props({model: root.props});
         var embedded = new Embedded({model: root});
         $("#navigation").html(links.render().el);
         $("#properties").html(props.render().el);

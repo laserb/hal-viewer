@@ -6,17 +6,33 @@ var Props = Backbone.View.extend({
     template: _.template($('#props_template').html()),
 
     render: function() {
-        var props = Object.keys(this.model.props);
-        var model = this.model;
-        props = $.map(props, function(prop, i) {
-            return {
-                name: prop,
-                value: model.props[prop]
-            };
-        });
-        this.$el.html(Mustache.render(this.template(),
-            { props: props }
-        ));
+        var that = this;
+        if(this.model === null) {
+            this.el = "";
+        }
+        else if(typeof this.model === 'object') {
+            var props = Object.keys(this.model);
+            $.each(props, function(i, prop) {
+                var value = that.model[prop];
+                if(typeof value === 'object') {
+                    that.$el.append(Mustache.render(that.template(),
+                        { name: prop }
+                    ));
+                    that.$el.find(".props_value").last().html(
+                        new Props({model: that.model[prop]}).render().el
+                    );
+                } else {
+                    that.$el.append(Mustache.render(that.template(),
+                        {
+                            name: prop,
+                            value: value
+                        }
+                    ));
+                }
+            });
+        } else {
+            this.el = this.model;
+        }
         return this;
     }
 });
