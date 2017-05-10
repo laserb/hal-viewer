@@ -35,7 +35,7 @@
     <script id="nav_links_template" type="text/template">
         {{#links}}
             {{#back_button}}
-                <li><a href="#" onclick="window.history.back()">back</a></li>
+                <li><a href="#" onclick="goBack(); return false;">back</a></li>
             {{/back_button}}
             {{^back_button}}
                 {{#audio_stream}}

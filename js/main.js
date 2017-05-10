@@ -37,3 +37,7 @@ var login = function(data) {
 var showLogin = function() {
     $("#login-form").css('display', 'block');
 };
+
+var goBack = function() {
+    Backbone.history.history.back();
+};
