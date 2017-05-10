@@ -1,5 +1,5 @@
 var Viewer = Backbone.View.extend({
-    render: function() {
+    render: function(root) {
         var links = new Links({
             model: root,
             className: "nav navbar-nav",
@@ -12,6 +12,5 @@ var Viewer = Backbone.View.extend({
         $("#navigation").html(links.render().el);
         $("#properties").html(props.render().el);
         $("#embedded").html(embedded.render().el);
-    }
-})
-
+    },
+});

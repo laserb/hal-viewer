@@ -61,4 +61,4 @@ var Embedded = Backbone.View.extend({
         });
         return this;
     }
-})
+});

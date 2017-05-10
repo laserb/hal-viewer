@@ -3,7 +3,7 @@ var Links = Backbone.View.extend({
         this.model = options.model;
         if(options.template) {
             this.template = options.template;
-        };
+        }
         this.selfName = options.selfName || 'self';
         this.index = options.index;
         if(options.tagName) {
@@ -65,9 +65,12 @@ var Links = Backbone.View.extend({
         var target = $(event.currentTarget);
         var link = target[0].name;
         var linkObj = this.model.links[link];
-        linkObj.fetch().then(function(data) {
-            window.location.hash = linkObj.href;
-            render(data);
+        window.location.hash = linkObj.href;
+        linkObj.fetch()
+        .catch(function(data) {
+            if(data.status === 401) {
+                showLogin(linkObj.href);
+            }
         });
     }
-})
+});

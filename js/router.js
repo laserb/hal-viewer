@@ -2,11 +2,10 @@ Router = Backbone.Router.extend({
     initialize: function(opts) {
         opts = opts || {};
         this.entryPoint = opts.entryPoint || '/';
-        this.token = opts.token || '';
         var api = new Hyperagent.Resource({
             url: this.entryPoint,
             headers: {
-                access_token: this.token
+                Authorization: 'Bearer ' + token
             }
         });
         api.fetch().then(function (root) {
@@ -17,6 +16,12 @@ Router = Backbone.Router.extend({
                 selfName: "home"
             });
             $("#main_navigation").html(links.render().el);
+            links = new Links({
+                model: root,
+                template: _.template($("#login_template").html()),
+                className: "nav navbar-nav navbar-right",
+            });
+            $("#main_navigation").append(links.render().el);
         }, function (err) {
             console.warn('Error fetching API root', err);
         });
@@ -32,14 +37,13 @@ Router = Backbone.Router.extend({
         var api = new Hyperagent.Resource({
             url: this.entryPoint + url,
             headers: {
-                access_token: this.token
+                Authorization: 'Bearer ' + token
             }
         });
         api.fetch().then(function (root) {
-            window.root = root;
-            viewer.render();
+            viewer.render(root);
         }, function (err) {
             console.warn('Error fetching API root', err);
         });
     }
-})
+});

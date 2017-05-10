@@ -19,4 +19,4 @@ var Props = Backbone.View.extend({
         ));
         return this;
     }
-})
+});
