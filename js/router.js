@@ -15,6 +15,16 @@ Router = Backbone.Router.extend({
                 className: "nav navbar-nav",
                 selfName: "home"
             });
+            $.each(Object.keys(links.model.links), function(i, link) {
+                if(link.toLowerCase().startsWith("auth")) {
+                    loginEndPoint = link;
+                    return true;
+                }
+                if(link.toLowerCase().startsWith("login")) {
+                    loginEndPoint = link;
+                    return true;
+                }
+            });
             $("#main_navigation").html(links.render().el);
             links = new Links({
                 model: root,

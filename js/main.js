@@ -18,7 +18,7 @@ var login = function(data) {
     $.ajax
     ({
         type: "POST",
-        url: entryPoint+"/auth",
+        url: entryPoint+"/"+loginEndPoint,
         dataType: 'multipart/formdata',
         beforeSend: function(xhr) {
             xhr.setRequestHeader ("Authorization", "Basic " + btoa(data.username.value + ":" + data.password.value));
