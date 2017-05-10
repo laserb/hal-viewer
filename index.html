@@ -13,31 +13,49 @@
         <div class="panel-group" id="embedded"></div>
     </div>
 
-    <script id="nav_links_template" type="text/template">
-            {{#links}}
-                {{#back_button}}
-                    <li><a href="#" onclick="window.history.back()">back</a></li>
-                {{/back_button}}
-                {{^back_button}}
-                    {{#audio_stream}}
-                        <div class="audio"><audio controls><source src="{{link}}"></audio></div>
-                    {{/audio_stream}}
-                    {{^audio_stream}}
-                        <li><a class="link" name="{{link}}" href="#">{{name}}</a></li>
-                    {{/audio_stream}}
-                {{/back_button}}
-            {{/links}}
+    <div id="login-form" class="login">
+        <form class="login-content animate" action="javascript:;" onsubmit="login(this)">
+            <div class="login-container">
+                <label><b>Username</b></label>
+                <input class="login-input" type="text" placeholder="Enter Username" name="username" required>
+
+                <label><b>Password</b></label>
+                <input class="login-input" type="password" placeholder="Enter Password" name="password" required>
+
+                <button class="login-button" type="submit">Login</button>
+            </div>
+        </form>
+    </div>
+
+    <script id="login_template" type="text/template">
+        <li id="login_button"><a onclick="showLogin()" href="#">Login</a></li>
     </script>
 
-    <script id="links_template" type="text/template">
-            {{#links}}
+    <script id="nav_links_template" type="text/template">
+        {{#links}}
+            {{#back_button}}
+                <li><a href="#" onclick="window.history.back()">back</a></li>
+            {{/back_button}}
+            {{^back_button}}
                 {{#audio_stream}}
                     <div class="audio"><audio controls><source src="{{link}}"></audio></div>
                 {{/audio_stream}}
                 {{^audio_stream}}
-                    <a class="link" name="{{link}}" href="#">{{name}}</a>
+                    <li><a class="link" name="{{link}}" href="#">{{name}}</a></li>
                 {{/audio_stream}}
-            {{/links}}
+            {{/back_button}}
+        {{/links}}
+    </script>
+
+    <script id="links_template" type="text/template">
+        {{#links}}
+            {{#audio_stream}}
+                <div class="audio"><audio controls><source src="{{link}}"></audio></div>
+            {{/audio_stream}}
+            {{^audio_stream}}
+                <a class="link" name="{{link}}" href="#">{{name}}</a>
+            {{/audio_stream}}
+        {{/links}}
     </script>
 
     <script id="props_template" type="text/template">
