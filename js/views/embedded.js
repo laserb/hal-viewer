@@ -31,8 +31,7 @@ var Embedded = Backbone.View.extend({
         $.each(embedded, function(i, obj) {
             that.$el.append(Mustache.render(that.template(),
                         {
-                embName: keys ? keys[i] : "",
-                name: obj.props.name || "",
+                embName: obj.props.name || obj.props.id || i,
                 index: i,
                 number: that.number,
                 parent: that.parent
