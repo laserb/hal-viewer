@@ -20,6 +20,7 @@
     "hyperagent": "^0.4.0",
     "mustache.js": "mustache#^2.3.0",
     "bootstrap": "^3.3.7",
-    "urijs": "uri.js#^1.18.10"
+    "urijs": "uri.js#^1.18.10",
+    "mediaelement": "^4.1.0"
   }
 }

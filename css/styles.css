@@ -212,3 +212,6 @@
   height: inherit;
   background-color: #00A7E7;
 }
+.mejs__controls {
+  background: #00A7E7 !important;
+}

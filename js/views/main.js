@@ -12,5 +12,12 @@ var Viewer = Backbone.View.extend({
         $("#navigation").html(links.render().el);
         $("#properties").html(props.render().el);
         $("#embedded").html(embedded.render().el);
+        initPlayer();
     },
 });
+
+var initPlayer = function() {
+    $('video, audio').each(function(i, data) {
+        $(data).mediaelementplayer();
+    });
+};

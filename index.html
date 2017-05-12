@@ -3,6 +3,7 @@
     <meta charset="utf-8">
     <title>The HAL Viewer</title>
     <link rel="stylesheet" media="screen" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" media="screen" href="bower_components/mediaelement/build/mediaelementplayer.min.css" />
     <link rel="stylesheet" media="screen" href="css/styles.css" />
 </head>
 <body>
@@ -39,7 +40,7 @@
             {{/back_button}}
             {{^back_button}}
                 {{#audio_stream}}
-                    <div class="audio"><audio controls><source src="{{link}}"></audio></div>
+                    <div class="audio"><audio controls preload="none"><source src="{{link}}"></audio></div>
                 {{/audio_stream}}
                 {{^audio_stream}}
                     <li><a class="link" name="{{link}}" href="#">{{name}}</a></li>
@@ -51,7 +52,7 @@
     <script id="links_template" type="text/template">
         {{#links}}
             {{#audio_stream}}
-                <div class="audio"><audio controls><source src="{{link}}"></audio></div>
+                <div class="audio"><audio controls preload="none"><source src="{{link}}"></audio></div>
             {{/audio_stream}}
             {{^audio_stream}}
                 <a class="link" name="{{link}}" href="#">{{name}}</a>
@@ -90,6 +91,7 @@
     <script src="bower_components/uri.js/src/URI.min.js"></script>
     <script src="bower_components/hyperagent/dist/hyperagent.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="bower_components/mediaelement/build/mediaelement-and-player.min.js"></script>
 
     <script src="js/config.js"></script>
     <script src="js/views/links.js"></script>
