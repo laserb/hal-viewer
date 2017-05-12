@@ -66,11 +66,5 @@ var Links = Backbone.View.extend({
         var link = target[0].name;
         var linkObj = this.model.links[link];
         window.location.hash = linkObj.href;
-        linkObj.fetch()
-        .catch(function(data) {
-            if(data.status === 401) {
-                showLogin(linkObj.href);
-            }
-        });
     }
 });

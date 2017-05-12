@@ -50,10 +50,14 @@ Router = Backbone.Router.extend({
                 Authorization: 'Bearer ' + token
             }
         });
-        api.fetch().then(function (root) {
+        api.fetch()
+        .then(function (root) {
             viewer.render(root);
         }, function (err) {
-            console.warn('Error fetching API root', err);
+            console.warn('Error fetching url '+url, err);
+            if(err.status === 401) {
+                showLogin();
+            }
         });
     }
 });
