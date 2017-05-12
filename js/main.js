@@ -28,7 +28,7 @@ var login = function(data) {
         if(data.status >= 200 && data.status < 300) {
             var url = new URI(window.location.href);
             token=JSON.parse(data.responseText).token;
-            url.addQuery('token', token);
+            url.addQuery('access_token', token);
             window.location.href = url.href();
         }
     });

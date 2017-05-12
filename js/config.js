@@ -1,18 +1,21 @@
-var getUrlParameter = function getUrlParameter(sParam) {
-    var sPageURL = decodeURIComponent(window.location.search.substring(1)),
-        sURLVariables = sPageURL.split('&'),
-        sParameterName,
-        i;
+var url = new URI(window.location.href);
+var queryParameters = url.search(true);
 
-    for (i = 0; i < sURLVariables.length; i++) {
-        sParameterName = sURLVariables[i].split('=');
-
-        if (sParameterName[0] === sParam) {
-            return sParameterName[1] === undefined ? true : sParameterName[1];
-        }
+var checkEntryPoint = function(entryPoint) {
+    if(!entryPoint.startsWith("http")) {
+        entryPoint = "http://" + entryPoint;
     }
-};
+    return entryPoint;
+}
 
-var entryPoint = getUrlParameter('entryPoint') || 'http://localhost';
-var token = getUrlParameter('token') || '';
+var entryPoint = queryParameters.entry_point || '';
+var token = queryParameters.access_token || '';
 var audioStreamItem = 'stream';
+
+while(entryPoint === '') {
+    entryPoint = prompt('New entry point', 'http://localhost');
+    entryPoint = checkEntryPoint(entryPoint);
+    url.addQuery('entry_point', entryPoint);
+    window.location.href = url.href();
+}
+entryPoint = checkEntryPoint(entryPoint);
