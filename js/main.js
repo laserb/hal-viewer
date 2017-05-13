@@ -38,6 +38,26 @@ var showLogin = function() {
     $("#login-form").css('display', 'block');
 };
 
+var logout = function() {
+    token = '';
+    var url = new URI(window.location.href);
+    var queryParameters = url.search(true);
+    delete queryParameters.access_token;
+    url.query(queryParameters);
+    $.ajax
+    ({
+        type: "POST",
+        url: entryPoint+"/logout",
+        dataType: 'multipart/formdata',
+        beforeSend: function(xhr) {
+            xhr.setRequestHeader ("Authorization", "Bearer " + token);
+        }
+    })
+    .always(function (data) {
+        window.location.href = url.href();
+    });
+}
+
 var goBack = function() {
     Backbone.history.history.back();
 };

@@ -26,12 +26,21 @@ Router = Backbone.Router.extend({
                 }
             });
             $("#main_navigation").html(links.render().el);
-            links = new Links({
-                model: root,
-                template: _.template($("#login_template").html()),
-                className: "nav navbar-nav navbar-right",
-            });
-            $("#main_navigation").append(links.render().el);
+            if(!token) {
+                links = new Links({
+                    model: root,
+                    template: _.template($("#login_template").html()),
+                    className: "nav navbar-nav navbar-right",
+                });
+                $("#main_navigation").append(links.render().el);
+            } else {
+                links = new Links({
+                    model: root,
+                    template: _.template($("#logout_template").html()),
+                    className: "nav navbar-nav navbar-right",
+                });
+                $("#main_navigation").append(links.render().el);
+            }
         }, function (err) {
             console.warn('Error fetching API root', err);
         });
